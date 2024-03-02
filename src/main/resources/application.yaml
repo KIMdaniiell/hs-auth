@@ -1,0 +1,17 @@
+server:
+  port: 9011
+
+spring:
+  application:
+    name: auth-service
+  profiles:
+    active: LOCAL
+  config:
+    import: configserver:http://configuration-server:8888
+  cloud:
+    inetutils:
+      preferred-networks: 172.25
+
+jwt:
+  secret: ${JWT_SECRET}
+  lifetime: ${TOKEN_DURATION}
