@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.itmo.hsauth.model.dto.MessageDTO;
@@ -44,6 +45,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/")
+    @PreAuthorize("hasRole('SUPERVISOR')")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO user) {
         UserDTO created = userService.create(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
@@ -58,6 +60,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}/roles")
+    @PreAuthorize("hasRole('SUPERVISOR')")
     public ResponseEntity<?> addRoleToUser(
             @PathVariable @Min(value = 0, message = MSG_ID_NEGATIVE) long userId,
             @Valid @RequestBody RoleDTO role,
@@ -73,6 +76,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}/roles")
+    @PreAuthorize("hasRole('SUPERVISOR')")
     public ResponseEntity<?> removeRoleFromUser(
             @PathVariable @Min(value = 0, message = MSG_ID_NEGATIVE) long userId,
             @Valid @RequestBody RoleDTO role
@@ -86,5 +90,4 @@ public class UserController {
                         null
                 ));
     }
-
 }

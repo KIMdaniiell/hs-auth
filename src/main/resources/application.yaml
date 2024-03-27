@@ -10,7 +10,7 @@ spring:
     import: configserver:http://configuration-server:8888
   cloud:
     inetutils:
-      preferred-networks: 172.25
+      preferred-networks: 172.18
 
 jwt:
   secret: ${JWT_SECRET}

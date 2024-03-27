@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "actors-service")
 public interface ActorsClient {
 
-    @GetMapping("/feign/players")
+    @GetMapping("feign/players")
     long findPlayerIdByUserId(@RequestParam long userId);
 
-    @DeleteMapping("/feign/players/{playerId}")
+    @DeleteMapping("feign/players/{playerId}")
     void deletePlayerById(@PathVariable long playerId);
 
-    @GetMapping("/feign/managers")
-    long findTeamManagerIdByUserId(@RequestParam long managerId);
+    @GetMapping("feign/managers")
+    long findTeamManagerIdByUserId(@RequestParam long userId);
 
-    @DeleteMapping("/feign/managers/{managerId}")
+    @DeleteMapping("feign/managers/{managerId}")
     void deleteTeamManagerById(@PathVariable long managerId);
 }

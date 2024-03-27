@@ -5,19 +5,10 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet author="kimdaniiell@gmail.com" id="2024-02-27-insert-roles-data-1">
-        <!--user roles-->
-        <insert tableName="user_roles">
-            <column name="role" value="ROLE_PLAYER"/>
-            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_PLAYER_1')"/>
-        </insert>
-        <insert tableName="user_roles">
-            <column name="role" value="ROLE_PLAYER"/>
-            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_PLAYER_2')"/>
-        </insert>
-        <insert tableName="user_roles">
-            <column name="role" value="ROLE_PLAYER"/>
-            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_PLAYER_3')"/>
-        </insert>
+
+
+        <!--  Managers  -->
+
         <insert tableName="user_roles">
             <column name="role" value="ROLE_TEAM_MANAGER"/>
             <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_MANAGER_1')"/>
@@ -30,14 +21,59 @@
             <column name="role" value="ROLE_TEAM_MANAGER"/>
             <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_MANAGER_3')"/>
         </insert>
+
+
+        <!--  Editors  -->
+
         <insert tableName="user_roles">
             <column name="role" value="ROLE_EDITOR"/>
             <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_EDITOR')"/>
         </insert>
+
+
+        <!--  Supervisors  -->
+
         <insert tableName="user_roles">
             <column name="role" value="ROLE_SUPERVISOR"/>
             <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_SUPERVISOR')"/>
         </insert>
+
+
+        <!--  Players  -->
+
+        <insert tableName="user_roles">
+            <column name="role" value="ROLE_PLAYER"/>
+            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_PLAYER_1')"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="role" value="ROLE_PLAYER"/>
+            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_PLAYER_2')"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="role" value="ROLE_PLAYER"/>
+            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_PLAYER_3')"/>
+        </insert>
+
+
+        <!--  Gods (Supervisor + Editor)  -->
+
+        <insert tableName="user_roles">
+            <column name="role" value="ROLE_SUPERVISOR"/>
+            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_GOD_1')"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="role" value="ROLE_EDITOR"/>
+            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_GOD_1')"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="role" value="ROLE_SUPERVISOR"/>
+            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_GOD_2')"/>
+        </insert>
+        <insert tableName="user_roles">
+            <column name="role" value="ROLE_EDITOR"/>
+            <column name="user_id" valueComputed="(SELECT user_id FROM users WHERE username='TEST_GOD_2')"/>
+        </insert>
+
     </changeSet>
 
 </databaseChangeLog>

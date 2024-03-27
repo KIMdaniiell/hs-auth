@@ -92,6 +92,7 @@ public class UserService extends GeneralService<UserEntity, UserDTO> implements 
     public void removeRole(long id, RoleDTO roleDTO, boolean deleteSideEntity) {
         UserEntity user = getEntityById(id);
         Role role = roleDTO.getRole();
+
         if (deleteSideEntity) {
             switch (role) {
                 case ROLE_PLAYER -> {
