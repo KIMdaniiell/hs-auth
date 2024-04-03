@@ -44,7 +44,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping(value = "/")
+    @PostMapping(value = {"/", ""})
     @PreAuthorize("hasRole('SUPERVISOR')")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO user) {
         UserDTO created = userService.create(user);
